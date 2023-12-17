@@ -1,0 +1,37 @@
+from pyqt5.QtWidgets import *
+from pyqt5.QtGui import QFont
+
+def main():
+    app = QApplication([])
+    window = QWidget()
+    window.setGeometry(100,100,200,300)
+    window.setWindowTitle("My First GUI")  
+    
+    layout = QVBoxLayout()
+    
+    label = QLabel("press the button below me")
+    textbox = QTextEdit()
+    button = QPushButton("press me")
+    
+    button.clicked.connect(lambda: on_clicked(textbox.toPlainText())) 
+    
+    layout.addWidget(label)
+    layout.addWidget(textbox)
+    layout.addWidget(button)
+    
+     
+    window.setLayout(layout)
+    
+    window.show()
+    app.exec_()
+    
+    
+def on_clicked(msg):
+    message = QMessageBox()
+    message.setText("msg")
+    message.exec_()
+    
+    
+if __name__ == '__main__':
+    main()
+    
